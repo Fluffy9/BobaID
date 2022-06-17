@@ -1,6 +1,12 @@
 # BobaID
 The social authentication layer on Boba Network. Connect to oAuth providers such as Github, HumanNode, Discord and others to access Sybil protected Dapps
 
+* UI/Documentation (This repo)
+* [Server](https://github.com/Fluffy9/BobaID-Server)
+* [Contracts](https://github.com/Fluffy9/BobaID-Contracts)
+* [Website](https://fluffy9.github.io/BobaID/#/)
+
+
 ## Why
 For NFT mints and other decentralized applications, dealing with scalpers is complicated. It's very easy to generate a thousand ethereum addresses, but it's a lot more effort to create a thousand Facebook accounts for example. Something as simple as requiring a social account connection cuts down some of the bot accounts. 
 
