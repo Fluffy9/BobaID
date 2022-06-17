@@ -9,7 +9,6 @@
             <br>
             <connect v-if="!$store.state['network']"></connect>
             <div class="text-left" v-else>
-                {{process.env}}
                 <h2>Instructions</h2>
                 <span>
                 1. Type in your username and click the 'Publish ID' button.
