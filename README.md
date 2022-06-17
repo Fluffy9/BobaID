@@ -19,7 +19,10 @@ After logging in with Github, the user is redirected back to the Client UI with 
 
 ```
     function setUser(string memory _code) public {
-        require(unauthenticated[_code] == address(0), "Code is already set");
+        bool isUnset = unauthenticated[_code] == address(0);
+        bool weekOld = ((unauthenticatedTimestamp[_code] + 7 days) < block.timestamp);
+        require( isUnset || weekOld, "Code is already set");
+        unauthenticatedTimestamp[_code] = block.timestamp;
         unauthenticated[_code] = msg.sender;
     }
 ```
@@ -32,14 +35,13 @@ Now that the user's transaction has succeeded and the authorization code has bee
     function proveUser(uint256 _claim, string memory _code) public returns (bool) {
         // Prove stuff
         require(unauthenticated[_code] == msg.sender, "You are only allowed to prove yourself");
-        bytes memory encRequest = abi.encodePacked(msg.sender, _code);
+        bytes memory encRequest = abi.encodePacked(_code);
         bytes memory encResponse = turing.TuringTx(url, encRequest);
         uint256 id = abi.decode(encResponse,(uint256));
         require(id == _claim, "The claimed ID doesn't match");
         authenticatedUsers[id] = msg.sender;
         unauthenticated[_code] == address(0);
         emit Proved(msg.sender, id);
-        return true;
     }
 ```
 
