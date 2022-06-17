@@ -73,7 +73,25 @@ Because the mapping is indexed by the account ID and not the user address, this 
 
 Once you get the account ID from the events, you will still want to rely on reading the `authenticatedUsers` mapping directly. There is nothing stopping a user from changing the address connected to their account. The only restriction is that there can just be one address connected at a time.
 
-## Client UI Setup (/app)
+## Client UI Setup (Docker)
+
+After git clone, modify the .env.example file
+rename it to .env
+
+### Build the image
+```
+docker build . -t boba-id
+```
+
+### Run the image
+```
+docker run -p 8080:8080 -it --name BobaID boba-id
+```
+
+## Client UI Setup (Development)
+
+After git clone, open the /store/index.js file. 
+Replace all instances of `process.env` with your own values.
 
 ### Project setup
 ```
@@ -92,9 +110,3 @@ npm run build
 
 #### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## Contract Setup (/contracts)
-
-```
-remixd -s ./contracts -u https://remix.ethereum.org
-```
