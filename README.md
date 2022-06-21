@@ -12,6 +12,9 @@ For NFT mints and other decentralized applications, dealing with scalpers is com
 
 There are a lot of different oAuth providers that can be used with varying levels of difficulty to fake. There are also some providers that offer complete sybil protection. Having this be a seperate, interoperable application means that developers of the next airdrop or NFT mint can simply integrate BobaID and get back to focusing on building their project. 
 
+## Issues
+Boba network caches Turing responses before the transaction for only 5 seconds. Metamask frequently takes more than 5 seconds to even load the transaction in my experience. This means that any transaction sent using Metamask involving a Turing call will fail on chain, including the `proveUser` function. Your mileage may vary. This is pretty project breaking, but it's outside of my control. Hopefully the cache length is increased in the future
+
 ## How It Works
 Boba ID is bringing oAuth to the blockchain.
 There are 3 aspects to this application. 
